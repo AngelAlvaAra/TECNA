@@ -5,8 +5,8 @@ import { getCollection } from "astro:content"
 const products = await getCollection('products');
 ---
 
-{products.map((product: CollectionEntry<'products'>)=>(
-    <div class="card bg-base-100 w-96 shadow-sm">
+{products.map((product) => (
+  <div class="card bg-base-100 w-96 shadow-sm" id={`container-${product.id}`}>
     <figure class="px-10 pt-10">
       <img
         src={product.data.image}
@@ -17,10 +17,37 @@ const products = await getCollection('products');
       <h2 class="card-title font-montserratExtraBold text-[25px]">{product.data.title}</h2>
       <p class="font-montserratRegular text-[15px]">{product.data.description}</p>
       <div class="card-actions">
-        <button class="btn bg-[#E32E3A] text-white border-none font-montserratBold font-montserratExtraBold text-[15px] mt-[5px]">Más información</button>
+        <button id={`btn-${product.id}`} class="btn bg-[#E32E3A] text-white border-none font-montserratBold font-montserratExtraBold text-[15px] mt-[5px]">Más información</button>
       </div>
     </div>
-  </div>
+ 
+        <dialog id={product.id} class="modal">
+      <form method="dialog" class="modal-box">
+        <h3 class="font-bold text-lg font-montserratExtraBold text-[25px]">{product.data.title}</h3>
+        
+        <!-- Mostrar contenido markdown renderizado -->
+        <div class="py-4 font-montserratRegular" set:html={product.rendered?.html} />
 
+        <div class="modal-action">
+          <button class="btn">Cerrar</button>
+        </div>
+      </form>
+    </dialog>
+  </div>
 ))}
+
+<!-- Script para agregar los eventos al DOM -->
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const buttons = document.querySelectorAll("button[id^='btn-']");
+
+    buttons.forEach((btn) => {
+      const id = btn.id.replace('btn-', '');
+      const modal = document.getElementById(id) as HTMLDialogElement; // Ensure TypeScript knows it's a <dialog>
+      if (modal) {
+        btn.addEventListener('click', () => modal.showModal());
+      }
+    });
+  });
+</script>
 

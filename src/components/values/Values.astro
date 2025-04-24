@@ -7,26 +7,29 @@ import "swiper/css/pagination";
 
 const values = await getCollection('values');
 ---
-<div class="swiper">
-    <div class="swiper-wrapper">
+  <div class="swiper">
+    <div class="swiper-wrapper py-[10px]">
       
         {values.map((value: CollectionEntry<'values'>)=>(
-    <div class="swiper-slide">
-        <div class="card bg-base-100 w-96 shadow-sm">
-    <figure class="px-10 pt-10">
-      <img
-        src={value.data.image}
-        alt="Shoes"
-        class="rounded-xl  h-[150px]" />
-    </figure>
-    <div class="card-body items-center text-center">
-      <h2 class="card-title font-montserratExtraBold text-[25px] text-[#852780]">{value.data.title}</h2>
-      <p class="font-montserratRegular text-[15px]">{value.data.description}</p>
-    </div>
-  </div>
-  </div>
+      <div class="swiper-slide">
+          <div class=" group card bg-base-100 w-96 shadow-sm hover:bg-[#852780] hover:text-white">
+            <figure class="px-10 pt-10">
+              <img
+                src={value.data.image}
+                alt="Shoes"
+                class="rounded-xl  h-[150px]" />
+            </figure>
+              <div class="card-body items-center text-center">
+                <h2 class="card-title font-montserratExtraBold text-[25px] text-[#852780] group-hover:text-white">{value.data.title}</h2>
+                <p class="font-montserratRegular text-[15px]">{value.data.description}</p>
+            </div>
+          </div>
+      </div>
         ))}
-      
+    </div>
+              <!-- If we need navigation buttons -->
+              <div class="swiper-button-prev"></div>
+              <div class="swiper-button-next"></div>
   </div>
   
   <script>
@@ -47,6 +50,11 @@ const values = await getCollection('values');
             autoplay: {
               delay: 3000,
               disableOnInteraction: false,
+            },
+             // Navigation arrows
+            navigation: {
+              nextEl: '.swiper-button-next',
+              prevEl: '.swiper-button-prev',
             },
             breakpoints: {
               320: { slidesPerView: 1 },
@@ -84,4 +92,18 @@ const values = await getCollection('values');
     .swiper-slide p{
         min-height: 70px;
     }
+    :root {
+  --swiper-navigation-size: 30px;
+    }
+    .swiper-button-prev,
+    .swiper-button-next {
+      color: #E32E3A; 
+      transition: color 0.3s ease;
+      font-weight: bold;
+    }
+    .swiper-button-prev:hover,
+    .swiper-button-next:hover {
+      color: #68151b; 
+    }
+
   </style>
