@@ -2,6 +2,7 @@
 
 import Header from '../components/header/Header.astro';
 import HeroSection from '../components/HeroSection/HeroSection.astro';
+import MisionVision from '../components/MisionVision/MisionVision.astro';
 import ProductSection from '../components/ProductSection/ProductSection.astro';
 import UsSection from '../components/UsSection/UsSection.astro';
 import Layout from '../layouts/Layout.astro';
@@ -11,6 +12,7 @@ import Layout from '../layouts/Layout.astro';
 	<Header/>
 	<HeroSection/>
 	<UsSection/>
+	<MisionVision/>
 	<div class=" bg-[#852780] py-[50px] flex-col">
 		<div class="flex justify-center items-center mb-[45px]">
 			<h1 class="font-montserratBold text-[35px] text-white">Nuestros Servicios</h1>
@@ -18,7 +20,6 @@ import Layout from '../layouts/Layout.astro';
 		<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-0 place-items-center px-[150px]">
 			<ProductSection/>
 		</div>
-
-		
 	</div>
+	
 </Layout>
