@@ -1,0 +1,87 @@
+---
+import type { CollectionEntry } from "astro:content";
+import { getCollection } from "astro:content";
+import "swiper/css";
+import "swiper/css/navigation";
+import "swiper/css/pagination";
+
+const values = await getCollection('values');
+---
+<div class="swiper">
+    <div class="swiper-wrapper">
+      
+        {values.map((value: CollectionEntry<'values'>)=>(
+    <div class="swiper-slide">
+        <div class="card bg-base-100 w-96 shadow-sm">
+    <figure class="px-10 pt-10">
+      <img
+        src={value.data.image}
+        alt="Shoes"
+        class="rounded-xl  h-[150px]" />
+    </figure>
+    <div class="card-body items-center text-center">
+      <h2 class="card-title font-montserratExtraBold text-[25px] text-[#852780]">{value.data.title}</h2>
+      <p class="font-montserratRegular text-[15px]">{value.data.description}</p>
+    </div>
+  </div>
+  </div>
+        ))}
+      
+  </div>
+  
+  <script>
+    import Swiper from 'swiper';
+    import { Navigation, Pagination, Autoplay } from 'swiper/modules';
+    
+    function iniciarSwiper() {
+      const elementosSwiper = document.querySelectorAll('.swiper');
+      
+      elementosSwiper.forEach(elemento => {
+        if (!elemento.classList.contains('swiper-initialized')) {
+          new Swiper(elemento as HTMLElement, {
+            modules: [Navigation, Pagination, Autoplay],
+            slidesPerView: 3, 
+            spaceBetween: 20,
+            loop: true,
+            speed: 800, 
+            autoplay: {
+              delay: 3000,
+              disableOnInteraction: false,
+            },
+            breakpoints: {
+              320: { slidesPerView: 1 },
+              640: { slidesPerView: 2 },
+              768: { slidesPerView: 3 },
+              1024: { slidesPerView: 3 },
+              1280: { slidesPerView: 3},
+            },
+          });
+        }
+      });
+    }
+  
+    document.addEventListener('DOMContentLoaded', iniciarSwiper);
+  </script>
+  
+  <style>
+    .swiper {
+      width: 100%;
+      height: auto;
+    }
+    
+    .swiper-slide {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100%;
+    }
+    
+    .swiper-slide img {
+      max-width: 150px;
+      max-height: 100px;
+      object-fit: contain;
+    }
+    .swiper-slide p{
+        min-height: 70px;
+    }
+  </style>
