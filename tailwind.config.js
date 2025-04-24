@@ -1,9 +1,11 @@
-// @ts-check
-import { defineConfig } from "astro/config";
-import tailwindcss from "@tailwindcss/vite";
-
-export default defineConfig({
-  vite: {
-    plugins: [tailwindcss()],
+/** @type {import('tailwindcss').Config} */
+export default {
+  content: ["./src/**/*.{html,js,astro,ts,tsx}"],
+  theme: {
+    extend: {},
   },
-});
+  plugins: [
+    require("daisyui"),
+    require("tailwindcss-animate"),
+  ],
+}

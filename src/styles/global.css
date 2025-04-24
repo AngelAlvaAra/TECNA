@@ -1,6 +1,7 @@
 @import "tailwindcss";
 @plugin "daisyui"; 
 
+
 /* Montserrat Regular 400 */
 @font-face {
     font-family: 'Montserrat';
