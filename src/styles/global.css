@@ -1,2 +1,48 @@
 @import "tailwindcss";
 @plugin "daisyui"; 
+
+/* Montserrat Regular 400 */
+@font-face {
+    font-family: 'Montserrat';
+    src: url('/fonts/Montserrat-Regular.ttf') format('truetype'),
+         url('/fonts/Montserrat-Regular.otf') format('opentype'),
+         url('/fonts/Montserrat-Regular.woff') format('woff');
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+  }
+  
+  /* Montserrat Bold 700 */
+  @font-face {
+    font-family: 'Montserrat';
+    src: url('/fonts/Montserrat-Bold.ttf') format('truetype'),
+         url('/fonts/Montserrat-Bold.otf') format('opentype'),
+         url('/fonts/Montserrat-Bold.woff') format('woff');
+    font-weight: 700;
+    font-style: normal;
+    font-display: swap;
+  }
+  
+  /* Montserrat Extra Bold 800 */
+  @font-face {
+    font-family: 'Montserrat';
+    src: url('/fonts/Montserrat-ExtraBold.ttf') format('truetype'),
+         url('/fonts/Montserrat-ExtraBold.otf') format('opentype'),
+         url('/fonts/Montserrat-ExtraBold.woff') format('woff');
+    font-weight: 800;
+    font-style: normal;
+    font-display: swap;
+  }
+
+  .font-montserratRegular {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 400;
+ }
+ .font-montserratBold {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+ }
+ .font-montserratExtraBold {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+ }
