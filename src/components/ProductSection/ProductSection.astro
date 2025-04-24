@@ -1,4 +1,26 @@
 ---
+import type { CollectionEntry } from "astro:content";
+import { getCollection } from "astro:content"
 
+const products = await getCollection('products');
 ---
+
+{products.map((product: CollectionEntry<'products'>)=>(
+    <div class="card bg-base-100 w-96 shadow-sm">
+    <figure class="px-10 pt-10">
+      <img
+        src={product.data.image}
+        alt="Shoes"
+        class="rounded-xl  h-[150px]" />
+    </figure>
+    <div class="card-body items-center text-center">
+      <h2 class="card-title font-montserratExtraBold text-[25px]">{product.data.title}</h2>
+      <p class="font-montserratRegular text-[15px]">{product.data.description}</p>
+      <div class="card-actions">
+        <button class="btn bg-[#E32E3A] text-white border-none font-montserratBold font-montserratExtraBold text-[15px] mt-[5px]">Más información</button>
+      </div>
+    </div>
+  </div>
+
+))}
 
